@@ -1,0 +1,11 @@
+{
+  "name": "dev-tools",
+  "version": "0.0.0",
+  "description": "Tools for development: automated tasks, lints, docs and more...",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "David Almeida <davidbarna@gmail.com>",
+  "license": "ISC"
+}
