@@ -1,0 +1,10 @@
+module.exports =
+  coffee: require( './coffee' )
+  sass: require( './sass' )
+  jade: require( './jade' )
+  browserify: require( './browserify' )
+  copy: require( './copy' )
+  coffeelint: require( './coffeelint' )
+  server: require( './server' )
+  watch: require( './watch' )
+  test: require( './test' )

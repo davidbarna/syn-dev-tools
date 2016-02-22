@@ -1,0 +1,250 @@
+linters:
+  IdSelector:
+    enabled: false
+
+  BorderZero:
+    enabled: true
+
+  CapitalizationInSelector:
+    enabled: true
+
+  ColorKeyword:
+    enabled: true
+
+  Comment:
+    enabled: true
+
+  DebugStatement:
+    enabled: true
+
+  DeclarationOrder:
+    enabled: false
+
+  DuplicateProperty:
+    enabled: true
+
+  ElsePlacement:
+    enabled: true
+    style: same_line # or 'new_line'
+
+  EmptyLineBetweenBlocks:
+    enabled: true
+    ignore_single_line_blocks: true
+
+  EmptyRule:
+    enabled: true
+
+  FinalNewline:
+    enabled: true
+    present: true
+
+  HexLength:
+    enabled: true
+    style: short # or 'long'
+
+  HexNotation:
+    enabled: true
+    style: lowercase # or 'uppercase'
+
+  HexValidation:
+    enabled: true
+
+  IdWithExtraneousSelector:
+    enabled: true
+
+  Indentation:
+    enabled: true
+    character: space # or 'tab'
+    width: 2
+
+  LeadingZero:
+    enabled: true
+    style: exclude_zero # or 'include_zero'
+
+  MergeableSelector:
+    enabled: true
+    force_nesting: true
+
+  NameFormat:
+    enabled: false
+
+  SelectorFormat:
+    enabled: true
+    convention: '^[_a-zA-Z0-9-_]+$' # or 'BEM', or a regex pattern
+
+  NestingDepth:
+    enabled: true
+    max_depth: 4
+
+  PlaceholderInExtend:
+    enabled: false
+
+  PropertySortOrder:
+    enabled: true
+    order:
+      - display
+      - visibility
+      - opacity
+      - box-sizing
+      - visibility
+      - overflow
+      - opacity
+      - clip
+      - position
+      - z-index
+      - flexbox
+      - float
+      - clear
+      - display
+      - max-width
+      - max-height
+      - min-width
+      - min-height
+      - width
+      - height
+      - top
+      - right
+      - bottom
+      - left
+      - padding
+      - margin
+      - list-style
+      - border-collapse
+      - resize
+      - filter
+      - background
+      - background-color
+      - background-image
+      - background-position
+      - background-repeat
+      - filter
+      - border
+      - border-width
+      - border-style
+      - border-color
+      - outline
+      - outline-width
+      - outline-style
+      - outline-color
+      - outline-offset
+      - border-radius
+      - box-shadow
+      - transform
+      - font
+      - font-size
+      - line-height
+      - font-weight
+      - font-family
+      - color
+      - text-align
+      - text-transform
+      - font-style
+      - text-decoration
+      - word-wrap
+      - content
+      - letter-spacing
+      - word-spacing
+      - text-shadow
+      - cursor
+      - animation
+      - name
+      - duration
+      - play-state
+      - timing-function
+      - delay
+      - iteration count
+      - direction
+      - transition
+      - duration
+      - timing-function
+      - delay
+      - property
+    ignore_unspecified: true
+
+  PropertySpelling:
+    enabled: true
+    extra_properties: []
+
+  SelectorDepth:
+    enabled: true
+    max_depth: 4
+
+  Shorthand:
+    enabled: true
+
+  SingleLinePerProperty:
+    enabled: true
+    allow_single_line_rule_sets: true
+
+  SingleLinePerSelector:
+    enabled: false
+
+  SpaceAfterComma:
+    enabled: false
+
+  SpaceAfterPropertyColon:
+    enabled: true
+    style: one_space # or 'no_space', or 'at_least_one_space', or 'aligned'
+
+  SpaceAfterPropertyName:
+    enabled: true
+
+  SpaceBeforeBrace:
+    enabled: true
+    allow_single_line_padding: false
+
+  SpaceBetweenParens:
+    enabled: true
+    spaces: 1
+
+  StringQuotes:
+    enabled: true
+    style: double_quotes # or double_quotes
+
+  TrailingSemicolon:
+    enabled: true
+
+  TrailingZero:
+    enabled: false
+
+  UnnecessaryMantissa:
+    enabled: true
+
+  UnnecessaryParentReference:
+    enabled: false
+
+  UrlFormat:
+    enabled: true
+
+  UrlQuotes:
+    enabled: true
+
+  ZeroUnit:
+    enabled: true
+
+  QualifyingElement:
+    enabled: false
+
+  Compass::*:
+    enabled: false
+
+  ImportPath:
+    enabled: false
+    leading_underscore: false
+    filename_extension: false
+
+  VendorPrefixes:
+    enabled: true
+    identifier_list: base
+    include: []
+    exclude: [
+      'tap-highlight-color',
+      'text-size-adjust',
+      'touch-callout'
+    ]
+
+  ColorVariable:
+    enabled: false
+
+  ImportantRule:
+    enabled: false
