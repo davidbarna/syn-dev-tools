@@ -20,8 +20,8 @@ jade = ( files ) ->
  * @return {Object} Files sourcestream
 ###
 jade.compile = ( stream ) ->
-  jade = require( 'gulp-jade' )
-  stream = stream.pipe( jade( pretty: !config.minify() ) )
+  compileJade = require( 'gulp-jade' )
+  stream = stream.pipe( compileJade( pretty: !config.minify() ) )
   return stream
 
 module.exports = jade
