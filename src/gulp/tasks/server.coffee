@@ -8,7 +8,7 @@ watch = require( './watch' )
  * @param  {number} port Post
  * @return {undefined}
 ###
-server = ( host, port ) ->
+server = ( host = 'localhost', port = 3000 ) ->
   browserSync = require( 'browser-sync' )
 
   browserSync(

@@ -38,7 +38,7 @@ browserify.compile = ( files ) ->
     bundler
       .on( 'update',  ( files ) ->
         files.forEach ( file ) ->
-          logger.log( file.replace( __dirname ) + 'was edited.' )
+          logger.log( file.replace( __dirname ) + ' was edited.' )
         bundle( true )
       ).on( 'log', logger.log )
 
