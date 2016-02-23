@@ -10,7 +10,7 @@ logger = require( '../logger' ).getInstance()
  * @return {Object} Files sourcestream
 ###
 sass = ( files ) ->
-  watch( files, sass, 'sass' )
+  watch( files, sass, 'sass', true )
   stream = gulp.src( files )
   stream = sass.compile( stream )
   return stream.pipe( gulp.dest( config.dest() ) )

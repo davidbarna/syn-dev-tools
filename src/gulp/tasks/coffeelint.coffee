@@ -9,7 +9,7 @@ logger = require( '../logger' ).getInstance()
  * @return {Object} Files sourcestream
 ###
 coffeelint = ( files ) ->
-  watch( files, coffeelint, 'coffeelint' )
+  watch( files, coffeelint, 'coffeelint', true )
   stream = gulp.src( files )
   return coffeelint.lint( stream )
 

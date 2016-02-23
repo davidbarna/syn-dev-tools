@@ -24,7 +24,7 @@ class GulpManager
   ###
   paths:
     jade: '/**/*.jade'
-    sass: '**/*.scss'
+    sass: '/**/*.scss'
     browserify: '/index.coffee'
     coffee: '/**/*.coffee'
     static: '/**/*.+(jpg|png|svg|ico|mp3)'
