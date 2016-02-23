@@ -56,7 +56,6 @@ class GulpLogger
 
 
 
-
 ###
  * Unique instance of GulpLogger
  * @type {GulpLogger}
@@ -67,6 +66,6 @@ instance = null
  * @return {GulpLogger} unique instance of GulpLogger
 ###
 GulpLogger.getInstance = ->
-    return instance || instance = new GulpLogger()
+  return instance || instance = new GulpLogger()
 
 module.exports = GulpLogger

@@ -26,8 +26,8 @@ sass.compile = ( stream ) ->
   stream = stream.pipe( gulpSass() )
 
   if config.minify()
-    minifyCSS = require( 'gulp-minify-css' )
-    stream = stream.pipe( minifyCSS() )
+    cssnano = require( 'gulp-cssnano' )
+    stream = stream.pipe( cssnano() )
 
   return stream
 

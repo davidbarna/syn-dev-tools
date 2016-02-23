@@ -79,6 +79,6 @@ instance = null
  * @return {GulpManager} unique instance of GulpManager
 ###
 GulpManager.getInstance = ( gulp ) ->
-    return instance || instance = new GulpManager( gulp )
+  return instance || instance = new GulpManager( gulp )
 
 module.exports = GulpManager

@@ -4,21 +4,29 @@
   "description": "Tools for development: automated tasks, linters, docs and more...",
   "main": "build/index.js",
   "scripts": {
-    "test": "test"
+    "test": "gulp test",
+    "install": "gulp"
   },
   "author": "David Almeida <davidbarna@gmail.com>",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/soyundev/dev-tools.git"
+  },
   "dependencies": {
     "browser-sync": "2.11.1",
+    "chai": "3.5.0",
     "chalk": "1.1.1",
     "coffeeify": "2.0.1",
     "gulp": "3.9.1",
+    "gulp-coffee": "2.3.1",
     "gulp-coffeelint": "0.6.0",
+    "gulp-cssnano": "2.1.1",
     "gulp-jade": "1.1.0",
-    "gulp-minify-css": "1.2.3",
     "gulp-sass": "2.2.0",
     "gulp-scss-lint": "0.3.9",
     "jadeify": "4.6.0",
+    "jasmine": "2.4.1",
     "karma": "0.13.21",
     "karma-browserify": "5.0.1",
     "karma-chrome-launcher": "0.2.2",
@@ -27,8 +35,11 @@
     "karma-sinon-chai": "1.2.0-rc1",
     "karma-spec-reporter": "0.0.24",
     "lodash": "4.5.0",
+    "lolex": "1.4.0",
     "phantomjs-prebuilt": "2.1.4",
     "run-sequence": "1.1.5",
+    "sinon": "1.17.3",
+    "sinon-chai": "2.8.0",
     "uglifyify": "3.0.1",
     "vinyl-source-stream": "1.1.0",
     "watchify": "3.7.0",
