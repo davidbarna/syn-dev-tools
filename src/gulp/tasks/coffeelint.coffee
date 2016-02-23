@@ -19,6 +19,7 @@ coffeelint = ( files ) ->
  * @return {Object} Sourcestream
 ###
 coffeelint.lint = ( stream ) ->
+  return unless config.lint()
   gulpCoffeelint = require( 'gulp-coffeelint' )
   coffeelintConfig = require( '../../config/coffee-lint' )
   stream = stream
