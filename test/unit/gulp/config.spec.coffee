@@ -4,6 +4,7 @@ describe 'GulpConfig', ->
 
   beforeEach ->
     @sinon = sinon.sandbox.create()
+    @sinon.spy GulpConfig.prototype, 'env'
     @sinon.spy GulpConfig.prototype, 'src'
     @sinon.spy GulpConfig.prototype, 'dest'
     @sinon.spy GulpConfig.prototype, 'debug'
@@ -19,10 +20,19 @@ describe 'GulpConfig', ->
   describe '#constructor', ->
 
     it 'should set defaults', ->
+      @instance.env.should.have.been.calledWith 'production'
       @instance.src.should.have.been.calledWith './src'
       @instance.dest.should.have.been.calledWith './dest'
       @instance.lint.should.have.been.calledWith true
       @instance.minify.should.have.been.calledWith true
+
+  describe '#env', ->
+
+    beforeEach ->
+      @instance.env( 'development' )
+
+    it 'should get/set environment', ->
+      @instance.env().should.equal 'development'
 
   describe '#src', ->
 

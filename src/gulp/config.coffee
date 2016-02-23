@@ -16,6 +16,7 @@ class GulpConfig
    * Sets defaults values
   ###
   init: ->
+    @env( 'production' )
     @src( './src' )
     @dest( './dest' )
     @debug( false )
@@ -23,6 +24,16 @@ class GulpConfig
     @minify( true )
     @watch( false )
     try @set( require( 'yargs' ).argv )
+    return this
+
+  ###
+   * getter/setter of environment
+   * @param  {string} value
+   * @return {this}
+  ###
+  env: ( value ) ->
+    return @_environment if typeof value is 'undefined'
+    @_environment = value
     return this
 
   ###
@@ -90,6 +101,7 @@ class GulpConfig
   ###
   set: ( opts ) ->
     _ = require( 'lodash' )
+    @env( opts.env ) if !_.isUndefined( opts.env )
     @debug( opts.debug ) if !_.isUndefined( opts.debug )
     @lint( opts.lint ) if !_.isUndefined( opts.lint )
     @minify( opts.minify ) if !_.isUndefined( opts.minify )

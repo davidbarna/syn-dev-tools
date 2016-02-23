@@ -21,7 +21,10 @@ jade = ( files ) ->
 ###
 jade.compile = ( stream ) ->
   compileJade = require( 'gulp-jade' )
-  stream = stream.pipe( compileJade( pretty: !config.minify() ) )
+  jadeOptions =
+    pretty: !config.minify()
+    locals: env: config.env()
+  stream = stream.pipe( compileJade( jadeOptions ) )
   return stream
 
 module.exports = jade

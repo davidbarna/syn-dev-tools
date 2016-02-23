@@ -8,7 +8,7 @@
     "install": "gulp"
   },
   "author": "David Almeida <davidbarna@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/soyundev/dev-tools.git"
