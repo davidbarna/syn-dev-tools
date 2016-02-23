@@ -8,6 +8,10 @@
   },
   "author": "David Almeida <davidbarna@gmail.com>",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/soyundev/dev-tools.git"
+  },
   "dependencies": {
     "browser-sync": "2.11.1",
     "chalk": "1.1.1",
