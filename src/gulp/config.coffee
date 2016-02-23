@@ -107,6 +107,6 @@ instance = null
  * @return {GulpConfig} Unique instance of GulpConfig
 ###
 GulpConfig.getInstance = ->
-    return instance || instance = new GulpConfig()
+  return instance || instance = new GulpConfig()
 
 module.exports = GulpConfig
