@@ -40,7 +40,7 @@ class GulpManager
     'coffeelint': [ -> tasks.coffeelint( src( instance.paths.coffee ) ) ]
     'browserify': [ -> tasks.browserify( src( instance.paths.browserify ) ) ]
     'copy': [ -> tasks.copy( src( instance.paths.static ) ) ]
-    'serve': [ [ 'default' ], -> tasks.copy( src( instance.paths.static ) ) ]
+    'serve': [ [ 'default' ], -> tasks.server() ]
 
   ###
    * @constructor
