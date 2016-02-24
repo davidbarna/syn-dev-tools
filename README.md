@@ -40,7 +40,7 @@ $ gulp serve
 #### test
 Executes all tests located in /test folder
 ```
-$ gulp serve
+$ gulp test
 ```
 
 ### Tasks' options
