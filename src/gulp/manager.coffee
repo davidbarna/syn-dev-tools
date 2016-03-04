@@ -36,10 +36,11 @@ class GulpManager
    * @type {Object}
   ###
   tasks:
-    'default': [ [ 'jade', 'sass', 'coffeelint', 'browserify', 'copy'] ]
+    'default': [ [ 'jade', 'sass', 'coffeelint', 'coffee', 'browserify', 'copy'] ]
     'jade': [ -> tasks.jade( src( instance.paths.jade ) ) ]
     'sass': [ -> tasks.sass( src( instance.paths.sass ) ) ]
     'coffeelint': [ -> tasks.coffeelint( src( instance.paths.coffee ) ) ]
+    'coffee': [ -> tasks.coffee( src( instance.paths.coffee ) ) ]
     'browserify': [ -> tasks.browserify( src( instance.paths.browserify ) ) ]
     'copy': [ -> tasks.copy( src( instance.paths.static ) ) ]
     'serve': [ [ 'default' ], -> tasks.server() ]

@@ -53,8 +53,8 @@ bundle = ->
   sourcestream = require( 'vinyl-source-stream' )
   stream = bundler
     .bundle()
-    .on('error', logger.error )
-    .pipe( sourcestream( 'index.js' ) )
+    .on( 'error', logger.error )
+    .pipe( sourcestream( 'index.bundle.js' ) )
   stream = stream.pipe( gulp.dest( config.dest() ) )
   return stream
 
