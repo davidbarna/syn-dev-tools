@@ -40,7 +40,19 @@ $ gulp serve
 #### test
 Executes all tests located in /test folder
 ```
-$ gulp serve
+$ gulp test
+$ gulp test.unit
+$ gulp test.e2e
+```
+
+If you want to work on your end-to-end tests, you must compile the project manually
+So, for instance, you can run both commands y separate windows to make your tests
+reexecute each time a file is modified
+```
+$ gulp serve --watch --no-minify
+```
+```
+$ gulp test.e2e --watch
 ```
 
 ### Tasks' options
