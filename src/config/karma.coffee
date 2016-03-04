@@ -10,8 +10,12 @@ module.exports =
     browserify: require( './browserify' )
     singleRun: true
     autoWatch: false
+    specReporter:
+      maxLogLines: 5 # limit number of lines logged per test
 
   watch:
     _extends: 'test'
-    browsers: [ 'PhantomJS' ]
+    browsers: [ 'Chrome' ]
     reporters: [ 'spec' ]
+    specReporter:
+      suppressSkipped: true # do not print information about skipped tests
