@@ -9,7 +9,7 @@ config = require( '../config' ).getInstance()
  * @return {Object} Files sourcestream
 ###
 jade = ( files ) ->
-  watch( files, jade, 'jade' )
+  watch( files, jade, 'jade', true )
   stream = gulp.src( files )
   stream = jade.compile( stream )
   return stream.pipe( gulp.dest( config.dest() ) )

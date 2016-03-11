@@ -5,7 +5,7 @@
   "main": "build/index.js",
   "scripts": {
     "test": "gulp test",
-    "install": "node_modules/.bin/gulp"
+    "install": "node_modules/protractor/bin/webdriver-manager update; node_modules/.bin/gulp"
   },
   "author": "David Almeida <davidbarna@gmail.com>",
   "license": "MIT",
@@ -24,10 +24,12 @@
     "gulp-coffeelint": "0.6.0",
     "gulp-cssnano": "2.1.1",
     "gulp-jade": "1.1.0",
+    "gulp-protractor": "2.1.0",
     "gulp-sass": "2.2.0",
     "gulp-scss-lint": "0.3.9",
     "jadeify": "4.6.0",
     "jasmine": "2.4.1",
+    "jasmine-spec-reporter": "2.4.0",
     "karma": "0.13.21",
     "karma-browserify": "5.0.1",
     "karma-chrome-launcher": "0.2.2",
@@ -38,6 +40,7 @@
     "lodash": "4.5.0",
     "lolex": "1.4.0",
     "phantomjs-prebuilt": "2.1.4",
+    "protractor": "3.1.1",
     "run-sequence": "1.1.5",
     "sinon": "1.17.3",
     "sinon-chai": "2.8.0",

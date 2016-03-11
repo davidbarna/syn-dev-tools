@@ -1,6 +1,9 @@
 module.exports =
-  extensions: [ '.coffee', '.js', '.jade' ]
-  transform: [ 'coffeeify', 'jadeify' ]
+  transform: [
+    require( 'coffeeify' )
+    require( 'jadeify' )
+  ]
+  extensions: [ '.coffee', '.jade', '.js', '.html' ]
   debug: false
   paths: [ './' ]
   noBundleExternal: true
