@@ -30,7 +30,8 @@ browserify.compile = ( files ) ->
 
   bundler = browserify( bundlerOptions )
 
-  if config.minify() then bundler.transform( { global: true }, 'uglifyify' )
+  if config.minify()
+  then bundler.transform( { global: true }, require( 'uglifyify' ) )
 
   if config.watch()
     watchify = require( 'watchify' )
