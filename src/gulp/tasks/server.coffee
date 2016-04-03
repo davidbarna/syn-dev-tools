@@ -1,6 +1,7 @@
 gulp = require( 'gulp' )
 config = require( '../config' ).getInstance()
 watch = require( './watch' )
+Promise = require( 'bluebird' )
 
 ###
  * Creates a synced server poiting to destination folder
@@ -11,21 +12,26 @@ watch = require( './watch' )
 server = ( host = 'localhost', port = 3000 ) ->
   browserSync = require( 'browser-sync' )
 
-  browserSync(
-    server: baseDir: config.dest()
-    host: host
-    port: port
-    ghostMode: false
-    online: false
-    notify: false
-    open: false
-  )
+  server = browserSync.create( 'dev-tools-static-server' )
 
-  if config.watch()
-    destFiles = config.dest() + '/**/*.*'
-    watch( destFiles, server.reload, 'server' )
+  return new Promise ( resolve, reject ) ->
+    server.init(
+        server: baseDir: config.dest()
+        host: host
+        port: port
+        ghostMode: false
+        online: false
+        notify: false
+        open: false
+      ,
+        resolve
+    )
 
-  return
+    if config.watch()
+      destFiles = config.dest() + '/**/*.*'
+      watch( destFiles, server.reload, 'server' )
+
+    return
 
 ###
  * Reloads created server

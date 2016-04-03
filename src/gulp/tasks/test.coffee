@@ -59,11 +59,19 @@ test.karma = ( files ) ->
 ###
 test.protractor  = ( files ) ->
   gulp = require( 'gulp' )
+  browserSync = require( 'browser-sync' )
   gulpProtractor = require 'gulp-protractor'
   protractor = gulpProtractor.protractor
 
+  server = browserSync.get( 'dev-tools-static-server' )
+  port = server.getOption( 'port' )
+  host = server.getOption( 'host' )
+  protractorConfig =
+    configFile: __dirname + '/../../config/protractor'
+    args: ['--baseUrl', 'http://' + host + ':' + port ]
+
   gulp.src( files )
-    .pipe protractor( configFile: __dirname + '/../../config/protractor' )
+    .pipe protractor( protractorConfig )
     .on( 'error', logger.error )
 
 module.exports = test
