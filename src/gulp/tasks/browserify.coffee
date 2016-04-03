@@ -1,4 +1,6 @@
 gulp = require( 'gulp' )
+Promise = require( 'bluebird' )
+glob = Promise.promisify( require( 'glob' ) )
 config = require( '../config' ).getInstance()
 logger = require( '../logger' ).getInstance()
 bundler = null
@@ -13,15 +15,23 @@ browserify = ( files ) ->
   files = [ files ] if typeof files is 'string'
   path = require( 'path' )
 
-  files.map (file) -> path.resolve( file )
-  return browserify.compile( files )
+  promises = []
+  for file in files
+    promises.push(
+      glob( file ).then ( files ) ->
+        _promises = []
+        for file in files
+          _promises.push compile( [ path.resolve( file ) ] )
+        Promise.all( _promises )
+    )
+  Promise.all( promises )
 
 ###
  * Sets bundles and compiles files with browserify
  * @param  {Array} files Entry files
  * @return {Object} Files sourcestream
 ###
-browserify.compile = ( files ) ->
+compile = ( files ) ->
   browserify = require( 'browserify' )
 
   bundlerOptions = require( '../../config/browserify' )
@@ -36,6 +46,7 @@ browserify.compile = ( files ) ->
   if config.watch()
     watchify = require( 'watchify' )
     bundler = watchify( bundler )
+    console.log 'watchify', bundler._options, files
     bundler
       .on( 'update',  ( files ) ->
         files.forEach ( file ) ->
@@ -52,11 +63,22 @@ browserify.compile = ( files ) ->
 ###
 bundle = ->
   sourcestream = require( 'vinyl-source-stream' )
-  stream = bundler
-    .bundle()
-    .on( 'error', logger.error )
-    .pipe( sourcestream( 'index.bundle.js' ) )
-  stream = stream.pipe( gulp.dest( config.dest() ) )
-  return stream
+  path = require( 'path' )
+
+  srcPath = path.resolve( config.src() )
+  bundleFile = bundler._options.entries[0]
+  bundleFile = path.relative( srcPath, bundleFile )
+  bundleFile = bundleFile.replace( '.bundle', '' )
+  bundleFile = bundleFile.replace( '.coffee', '' )
+
+  return new Promise ( resolve, reject ) ->
+    stream = bundler
+      .bundle()
+      .on( 'error', logger.error )
+      .pipe( sourcestream( bundleFile + '.bundle.js' ) )
+
+    stream = stream.pipe( gulp.dest( config.dest() ) )
+    stream.on( 'end', resolve )
+
 
 module.exports = browserify
