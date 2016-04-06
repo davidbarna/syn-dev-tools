@@ -46,7 +46,6 @@ compile = ( files ) ->
   if config.watch()
     watchify = require( 'watchify' )
     bundler = watchify( bundler )
-    console.log 'watchify', bundler._options, files
     bundler
       .on( 'update',  ( files ) ->
         files.forEach ( file ) ->
