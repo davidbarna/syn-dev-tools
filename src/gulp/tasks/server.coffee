@@ -16,15 +16,15 @@ server = ( host = 'localhost', port = 3000 ) ->
 
   return new Promise ( resolve, reject ) ->
     server.init(
-        server: baseDir: config.dest()
-        host: host
-        port: port
-        ghostMode: false
-        online: false
-        notify: false
-        open: false
+      server: baseDir: config.dest()
+      host: host
+      port: port
+      ghostMode: false
+      online: false
+      notify: false
+      open: false
       ,
-        resolve
+      resolve
     )
 
     if config.watch()
