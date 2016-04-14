@@ -1,6 +1,6 @@
 {
   "name": "syn-dev-tools",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Tools for development: automated tasks, linters, docs and more...",
   "main": "build/index.js",
   "scripts": {
