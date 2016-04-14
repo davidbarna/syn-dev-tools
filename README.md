@@ -6,7 +6,7 @@ It provides gulp tasks with linters, tests execution and more.
 
 Install the module
 ```javascript
-$ npm install dev-tools --save-dev
+$ npm install syn-dev-tools --save-dev
 ```
 
 Create gulpfile.js with folowwing content
@@ -14,7 +14,7 @@ Create gulpfile.js with folowwing content
 /*
  * gulpfile.js
  */
-devTools = require('dev-tools/gulp');
+devTools = require('syn-dev-tools/gulp');
 manager = devTools.Manager.getInstance( require('gulp') );
 manager.registerTasks();
 ```
