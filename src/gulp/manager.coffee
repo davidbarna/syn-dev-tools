@@ -31,7 +31,7 @@ class GulpManager
   paths:
     jade: '/**/*.jade'
     sass: '/**/*.scss'
-    browserify: [ '/index.coffee', '/**/*.bundle.coffee' ]
+    browserify: [ '/**/*.bundle.coffee' ]
     coffee: '/**/*.coffee'
     static: '/**/*.+(jpg|png|svg|ico|mp3|js)'
     test:
