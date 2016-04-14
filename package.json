@@ -1,6 +1,6 @@
 {
-  "name": "dev-tools",
-  "version": "0.0.0",
+  "name": "syn-dev-tools",
+  "version": "0.0.1",
   "description": "Tools for development: automated tasks, linters, docs and more...",
   "main": "build/index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/soyundev/dev-tools.git"
+    "url": "git://github.com/soyundev/syn-dev-tools.git"
   },
   "dependencies": {
     "bluebird": "3.3.4",
