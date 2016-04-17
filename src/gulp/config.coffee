@@ -1,3 +1,5 @@
+{ defaults } = require( '../config' )
+
 ###
  * Global config gor gulp tasks
 ###
@@ -16,13 +18,13 @@ class GulpConfig
    * Sets defaults values
   ###
   init: ->
-    @env( 'production' )
-    @src( './src' )
-    @dest( './dest' )
-    @debug( false )
-    @lint( true )
-    @minify( true )
-    @watch( false )
+    @env( defaults.env )
+    @src( defaults.src )
+    @dest( defaults.dest )
+    @debug( defaults.debug )
+    @lint( defaults.lint )
+    @minify( defaults.minify )
+    @watch( defaults.watch )
     try @set( require( 'yargs' ).argv )
     return this
 

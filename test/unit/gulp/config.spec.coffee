@@ -1,6 +1,7 @@
 describe 'GulpConfig', ->
 
   GulpConfig = require( 'src/gulp/config' )
+  defaults = require( 'src/config' ).defaults
 
   beforeEach ->
     @sinon = sinon.sandbox.create()
@@ -20,11 +21,12 @@ describe 'GulpConfig', ->
   describe '#constructor', ->
 
     it 'should set defaults', ->
-      @instance.env.should.have.been.calledWith 'production'
-      @instance.src.should.have.been.calledWith './src'
-      @instance.dest.should.have.been.calledWith './dist'
-      @instance.lint.should.have.been.calledWith true
-      @instance.minify.should.have.been.calledWith true
+      @instance.env.should.have.been.calledWith defaults.env
+      @instance.debug.should.have.been.calledWith defaults.debug
+      @instance.src.should.have.been.calledWith defaults.src
+      @instance.dest.should.have.been.calledWith defaults.dest
+      @instance.lint.should.have.been.calledWith defaults.lint
+      @instance.minify.should.have.been.calledWith defaults.minify
 
   describe '#env', ->
 
