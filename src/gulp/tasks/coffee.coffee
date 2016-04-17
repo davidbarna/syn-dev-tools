@@ -1,6 +1,6 @@
 gulp = require( 'gulp' )
-watch = require( './watch' )
 path = require( 'path' )
+watch = require( './watch' )
 coffeelint = require( './coffeelint' )
 config = require( '../config' ).getInstance()
 
@@ -33,7 +33,9 @@ coffee = ( files ) ->
 ###
 coffee.compile = ( stream ) ->
   gulpCoffee = require( 'gulp-coffee' )
+  uglify = require('gulp-uglify')
   stream = stream.pipe( gulpCoffee( bare: true ) )
+  stream = stream.pipe( uglify() ) if config.minify()
   return stream
 
 module.exports = coffee

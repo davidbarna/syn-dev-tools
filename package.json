@@ -29,6 +29,7 @@
     "gulp-protractor": "2.1.0",
     "gulp-sass": "2.2.0",
     "gulp-scss-lint": "0.3.9",
+    "gulp-uglify": "1.5.3",
     "jadeify": "4.6.0",
     "jasmine": "2.4.1",
     "jasmine-spec-reporter": "2.4.0",
