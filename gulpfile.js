@@ -1,3 +1,3 @@
-// Register plugin that enable code compilation on require
-require( 'coffee-script/register' );
-require( './gulpfile.coffee' );
+gulp = require( './gulp' );
+manager = gulp.Manager.getInstance( require( 'gulp' ) );
+manager.registerTasks();

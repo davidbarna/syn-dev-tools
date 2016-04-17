@@ -2,7 +2,7 @@
   "name": "syn-dev-tools",
   "version": "0.0.5",
   "description": "Tools for development: automated tasks, linters, docs and more...",
-  "main": "build/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "gulp test",
     "install": "node_modules/.bin/gulp"

@@ -22,7 +22,7 @@ describe 'GulpConfig', ->
     it 'should set defaults', ->
       @instance.env.should.have.been.calledWith 'production'
       @instance.src.should.have.been.calledWith './src'
-      @instance.dest.should.have.been.calledWith './dest'
+      @instance.dest.should.have.been.calledWith './dist'
       @instance.lint.should.have.been.calledWith true
       @instance.minify.should.have.been.calledWith true
 

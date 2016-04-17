@@ -44,6 +44,7 @@ class GulpManager
   ###
   tasks:
     'default': [ [ 'jade', 'sass', 'coffeelint', 'coffee', 'browserify', 'copy' ] ]
+    'build': [ [ 'default', 'test' ] ]
     'jade': [ -> tasks.jade( src( instance.paths.jade ) ) ]
     'sass': [ -> tasks.sass( src( instance.paths.sass ) ) ]
     'coffeelint': [ -> tasks.coffeelint( src( instance.paths.coffee ) ) ]
