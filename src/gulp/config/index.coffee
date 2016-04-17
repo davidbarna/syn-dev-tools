@@ -1,4 +1,4 @@
-{ defaults } = require( '../config' )
+{ defaults } = require( '../../config' )
 
 ###
  * Global config gor gulp tasks
