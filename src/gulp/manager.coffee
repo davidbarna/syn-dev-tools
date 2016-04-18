@@ -31,8 +31,9 @@ class GulpManager
   paths:
     jade: '/**/*.jade'
     sass: '/**/*.scss'
-    browserify: [ '/**/*.bundle.coffee' ]
+    browserify: [ '/**/*.bundle.coffee', '/**/*.bundle.js' ]
     coffee: '/**/*.coffee'
+    babel: '/**/*.es'
     static: '/**/*.+(jpg|png|svg|ico|mp3|js)'
     test:
       unit: './test/unit/**/*.spec.coffee'
@@ -43,15 +44,16 @@ class GulpManager
    * @type {Object}
   ###
   tasks:
-    'default': [ [ 'jade', 'sass', 'coffeelint', 'coffee', 'browserify', 'copy' ] ]
+    'default': [ [ 'jade', 'sass', 'coffee', 'babel', 'browserify', 'copy' ] ]
     'build': [ [ 'default', 'test' ] ]
     'jade': [ -> tasks.jade( src( instance.paths.jade ) ) ]
     'sass': [ -> tasks.sass( src( instance.paths.sass ) ) ]
     'coffeelint': [ -> tasks.coffeelint( src( instance.paths.coffee ) ) ]
     'coffee': [ -> tasks.coffee( src( instance.paths.coffee ) ) ]
+    'babel': [ -> tasks.babel( src( instance.paths.babel ) ) ]
     'browserify': [ -> tasks.browserify( src( instance.paths.browserify ) ) ]
     'copy': [ -> tasks.copy( src( instance.paths.static ) ) ]
-    'serve': [ [ 'jade', 'sass', 'coffeelint', 'browserify', 'copy' ], -> tasks.server() ]
+    'serve': [ [ 'default' ], -> tasks.server() ]
     'test': [ [ 'test.unit', 'test.e2e' ] ]
     'test.unit': [ -> tasks.test.unit( instance.paths.test.unit ) ]
     'test.e2e': [ ->
