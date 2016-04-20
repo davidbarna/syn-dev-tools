@@ -1,7 +1,7 @@
 gulp = require( 'gulp' )
 watch = require( './watch' )
 config = require( '../config' ).getInstance()
-logger = require( '../logger' ).getInstance()
+log = require( '../logger' ).getInstance()
 
 ###
  * Compiles sass files to css
@@ -44,6 +44,7 @@ sass.lint = ( stream ) ->
     config: path.resolve( __dirname + '/../../config/scss-lint.yml')
     customReport: customReport
   stream = stream.pipe( scsslint( scsslintOptions ) )
+  stream = stream.on( 'error', ( err ) -> log.error( "#{err.plugin}: #{err.message}" ) )
 
   return stream
 
@@ -57,7 +58,7 @@ customReport = ( file, stream ) ->
   for issue in file.scsslint.issues
     filePath = file.history[0].replace( file.base, '' )
     msg = filePath + ':' + issue.line + ' » ' + issue.reason
-    logger[issue.severity]( msg )
+    log[issue.severity]( msg )
 
   return
 
