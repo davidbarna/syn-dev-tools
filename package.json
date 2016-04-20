@@ -3,9 +3,10 @@
   "version": "0.1.2",
   "description": "Tools for development: automated tasks, linters, docs and more...",
   "main": "dist/index.js",
+  "files": [ "dist" ],
   "scripts": {
     "test": "gulp test",
-    "install": "node_modules/.bin/gulp"
+    "prepublish": "gulp"
   },
   "author": "David Almeida <davidbarna@gmail.com>",
   "license": "GPL-3.0",
