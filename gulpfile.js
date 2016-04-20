@@ -1,3 +1,3 @@
-gulp = require( './gulp' );
-manager = gulp.Manager.getInstance( require( 'gulp' ) );
-manager.registerTasks();
+var devTools = require('./gulp')
+var manager = devTools.Manager.getInstance(require('gulp'))
+manager.registerTasks()

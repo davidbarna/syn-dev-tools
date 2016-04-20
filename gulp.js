@@ -4,5 +4,5 @@
  * That's why a separate entry point was created with coffeescript
  * auto compilation
  */
-require( 'coffee-script/register' );
-module.exports = require( './src/gulp' )
+require('coffee-script/register')
+module.exports = require('./src/gulp')
