@@ -34,7 +34,7 @@ class GulpManager
     browserify: [ '/**/*.bundle.+(coffee|js|es)' ]
     coffee: '/**/!(*.bundle).coffee'
     babel: '/**/!(*.bundle).es'
-    static: '/**/*.+(jpg|png|svg|ico|mp3|js)'
+    static: '/**/*.+(jpg|png|svg|ico|mp3|js|json)'
     test:
       unit: './test/unit/**/*.spec.coffee'
       e2e: './test/e2e/**/*.spec.coffee'
