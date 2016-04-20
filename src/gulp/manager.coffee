@@ -1,5 +1,6 @@
 Config = require( './config' )
 config = Config.getInstance()
+gulp = null
 
 # Hack for browserify in test runner context
 try tasks = require( '' + './tasks' )
@@ -45,7 +46,7 @@ class GulpManager
   ###
   tasks:
     'clean': [ ( cb ) -> require('del')( [config.dest()], cb ) ]
-    'default': [ -> require('run-sequence')( 'clean',
+    'default': [ -> require('run-sequence').use(gulp)( 'clean',
       [ 'copy', 'jade', 'sass', 'coffee', 'babel', 'browserify' ]
     ) ]
     'build': [ [ 'default', 'test' ] ]
@@ -69,6 +70,7 @@ class GulpManager
    * @param  {Object} @gulp Instance of gulp
   ###
   constructor: ( @gulp ) ->
+    gulp = @gulp
 
   ###
    * Register tasks so they can be accessible form gulp cli
