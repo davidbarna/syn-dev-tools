@@ -8,7 +8,7 @@
     "install": "node_modules/.bin/gulp"
   },
   "author": "David Almeida <davidbarna@gmail.com>",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/soyundev/syn-dev-tools.git"
