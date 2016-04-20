@@ -35,7 +35,7 @@ class GulpManager
     browserify: [ '/**/*.bundle.+(coffee|js|es)' ]
     coffee: '/**/!(*.bundle).coffee'
     babel: '/**/!(*.bundle).es'
-    static: '/**/*.+(jpg|png|svg|ico|mp3|js|json)'
+    static: '/**/*.+(jpg|png|svg|ico|mp3|js|json|yml)'
     test:
       unit: './test/unit/**/*.spec.coffee'
       e2e: './test/e2e/**/*.spec.coffee'
@@ -46,10 +46,10 @@ class GulpManager
   ###
   tasks:
     'clean': [ ( cb ) -> require('del')( [config.dest()], cb ) ]
-    'default': [ -> require('run-sequence').use(gulp)( 'clean',
-      [ 'copy', 'jade', 'sass', 'coffee', 'babel', 'browserify' ]
+    'default': [ ( cb ) -> require('run-sequence').use(gulp)( 'clean',
+      [ 'copy', 'jade', 'sass', 'coffee', 'babel', 'browserify' ], cb
     ) ]
-    'build': [ [ 'default', 'test' ] ]
+    'build': [  -> require('run-sequence').use(gulp)( 'default', 'test' ) ]
     'jade': [ -> tasks.jade( src( instance.paths.jade ) ) ]
     'sass': [ -> tasks.sass( src( instance.paths.sass ) ) ]
     'coffeelint': [ -> tasks.coffeelint( src( instance.paths.coffee ) ) ]
