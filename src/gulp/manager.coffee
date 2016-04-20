@@ -44,7 +44,7 @@ class GulpManager
    * @type {Object}
   ###
   tasks:
-    'default': [ [ 'jade', 'sass', 'coffee', 'babel', 'browserify', 'copy' ] ]
+    'default': [ [ 'copy', 'jade', 'sass', 'coffee', 'babel', 'browserify' ] ]
     'build': [ [ 'default', 'test' ] ]
     'jade': [ -> tasks.jade( src( instance.paths.jade ) ) ]
     'sass': [ -> tasks.sass( src( instance.paths.sass ) ) ]
