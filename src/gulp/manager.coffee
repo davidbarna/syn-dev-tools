@@ -44,7 +44,10 @@ class GulpManager
    * @type {Object}
   ###
   tasks:
-    'default': [ [ 'copy', 'jade', 'sass', 'coffee', 'babel', 'browserify' ] ]
+    'clean': [ ( cb ) -> require('del')( [config.dest()], cb ) ]
+    'default': [ -> require('run-sequence')( 'clean',
+      [ 'copy', 'jade', 'sass', 'coffee', 'babel', 'browserify' ]
+    ) ]
     'build': [ [ 'default', 'test' ] ]
     'jade': [ -> tasks.jade( src( instance.paths.jade ) ) ]
     'sass': [ -> tasks.sass( src( instance.paths.sass ) ) ]
