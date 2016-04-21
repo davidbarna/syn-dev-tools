@@ -45,7 +45,14 @@ $ gulp test.unit
 $ gulp test.e2e
 ```
 
-If you want to work on your end-to-end tests, you must compile the project manually
+> ** IMPORTANT **
+
+> ** If you want to execute end-to-end tests, you must update webdriver to execute tests in chromeDriver.**
+```
+$ node_modules/.bin/webdriver-manager update
+```
+
+If you want to work on your end-to-end tests, you must compile the project manually.
 So, for instance, you can run both commands y separate windows to make your tests
 reexecute each time a file is modified
 ```
