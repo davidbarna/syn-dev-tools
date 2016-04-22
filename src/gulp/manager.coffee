@@ -45,7 +45,12 @@ class GulpManager
    * @type {Object}
   ###
   tasks:
-    'clean': [ ( cb ) -> require('del')( [config.dest()], cb ) ]
+    'clean': [ ( cb ) ->
+      path = require( 'path' )
+      if path.resolve(config.dest()) isnt path.resolve('.')
+        require('del')( [config.dest()], cb )
+      else cb()
+    ]
     'default': [ ( cb ) -> require('run-sequence').use(gulp)( 'clean',
       [ 'copy', 'jade', 'sass', 'coffee', 'babel', 'browserify' ], cb
     ) ]
