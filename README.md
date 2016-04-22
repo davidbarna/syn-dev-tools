@@ -12,11 +12,12 @@ $ npm install syn-dev-tools --save-dev
 Create gulpfile.js with folowwing content
 ```javascript
 /*
- * gulpfile.js
+ * Gulpfile
+ * Tasks are registered from dev-tools module.
  */
-devTools = require('syn-dev-tools/gulp');
-manager = devTools.Manager.getInstance( require('gulp') );
-manager.registerTasks();
+var devTools = require('syn-dev-tools').gulp
+var manager = devTools.Manager.getInstance(require('gulp'))
+manager.registerTasks()
 ```
 
 Done ! You can use any of the gulp tasks
