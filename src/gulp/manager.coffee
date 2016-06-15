@@ -1,5 +1,6 @@
 Config = require( './config' )
 config = Config.getInstance()
+gulp = null
 
 # Hack for browserify in test runner context
 try tasks = require( '' + './tasks' )
@@ -31,9 +32,10 @@ class GulpManager
   paths:
     jade: '/**/*.jade'
     sass: '/**/*.scss'
-    browserify: [ '/**/*.bundle.coffee' ]
-    coffee: '/**/*.coffee'
-    static: '/**/*.+(jpg|png|svg|ico|mp3|js)'
+    browserify: [ '/**/*.bundle.+(coffee|js|es)' ]
+    coffee: '/**/!(*.bundle).coffee'
+    babel: '/**/!(*.bundle).es'
+    static: '/**/*.+(jpg|png|svg|ico|mp3|js|json|yml|ttf|eot|woff|woff2)'
     test:
       unit: './test/unit/**/*.spec.coffee'
       e2e: './test/e2e/**/*.spec.coffee'
@@ -43,14 +45,24 @@ class GulpManager
    * @type {Object}
   ###
   tasks:
-    'default': [ [ 'jade', 'sass', 'coffeelint', 'coffee', 'browserify', 'copy' ] ]
+    'clean': [ ( cb ) ->
+      path = require( 'path' )
+      if path.resolve(config.dest()) isnt path.resolve('.')
+        require('del')( [config.dest()], cb )
+      else cb()
+    ]
+    'default': [ ( cb ) -> require('run-sequence').use(gulp)( 'clean',
+      [ 'copy', 'jade', 'sass', 'coffee', 'babel', 'browserify' ], cb
+    ) ]
+    'build': [  -> require('run-sequence').use(gulp)( 'default', 'test' ) ]
     'jade': [ -> tasks.jade( src( instance.paths.jade ) ) ]
     'sass': [ -> tasks.sass( src( instance.paths.sass ) ) ]
     'coffeelint': [ -> tasks.coffeelint( src( instance.paths.coffee ) ) ]
     'coffee': [ -> tasks.coffee( src( instance.paths.coffee ) ) ]
+    'babel': [ -> tasks.babel( src( instance.paths.babel ) ) ]
     'browserify': [ -> tasks.browserify( src( instance.paths.browserify ) ) ]
     'copy': [ -> tasks.copy( src( instance.paths.static ) ) ]
-    'serve': [ [ 'jade', 'sass', 'coffeelint', 'browserify', 'copy' ], -> tasks.server() ]
+    'serve': [ [ 'default' ], -> tasks.server() ]
     'test': [ [ 'test.unit', 'test.e2e' ] ]
     'test.unit': [ -> tasks.test.unit( instance.paths.test.unit ) ]
     'test.e2e': [ ->
@@ -63,6 +75,7 @@ class GulpManager
    * @param  {Object} @gulp Instance of gulp
   ###
   constructor: ( @gulp ) ->
+    gulp = @gulp
 
   ###
    * Register tasks so they can be accessible form gulp cli

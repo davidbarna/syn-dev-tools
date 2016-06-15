@@ -67,8 +67,11 @@ bundle = ->
   srcPath = path.resolve( config.src() )
   bundleFile = bundler._options.entries[0]
   bundleFile = path.relative( srcPath, bundleFile )
-  bundleFile = bundleFile.replace( '.bundle', '' )
-  bundleFile = bundleFile.replace( '.coffee', '' )
+
+  replacements = [ '.bundle', '.coffee', '.es' ]
+  for str in replacements
+    bundleFile = bundleFile.replace( str, '' )
+
 
   return new Promise ( resolve, reject ) ->
     stream = bundler

@@ -12,11 +12,12 @@ $ npm install syn-dev-tools --save-dev
 Create gulpfile.js with folowwing content
 ```javascript
 /*
- * gulpfile.js
+ * Gulpfile
+ * Tasks are registered from dev-tools module.
  */
-devTools = require('syn-dev-tools/gulp');
-manager = devTools.Manager.getInstance( require('gulp') );
-manager.registerTasks();
+var devTools = require('syn-dev-tools').gulp
+var manager = devTools.Manager.getInstance(require('gulp'))
+manager.registerTasks()
 ```
 
 Done ! You can use any of the gulp tasks
@@ -45,7 +46,14 @@ $ gulp test.unit
 $ gulp test.e2e
 ```
 
-If you want to work on your end-to-end tests, you must compile the project manually
+> ** IMPORTANT **
+
+> ** If you want to execute end-to-end tests, you must update webdriver to execute tests in chromeDriver.**
+```
+$ node_modules/.bin/webdriver-manager update
+```
+
+If you want to work on your end-to-end tests, you must compile the project manually.
 So, for instance, you can run both commands y separate windows to make your tests
 reexecute each time a file is modified
 ```

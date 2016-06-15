@@ -1,5 +1,6 @@
 module.exports =
   coffee: require( './coffee' )
+  babel: require( './babel' )
   sass: require( './sass' )
   jade: require( './jade' )
   browserify: require( './browserify' )

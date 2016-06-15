@@ -1,14 +1,16 @@
-stringify = require( 'stringify' )
-
 browserifyConfig =
   transform: [
     require( 'coffeeify' )
     require( 'jadeify' )
-    stringify( appliesTo: includeExtensions: ['.svg', '.html'] )
+    require( 'stringify' )( appliesTo: includeExtensions: [ '.svg', '.html' ] )
+    require( 'babelify' ).configure(
+      presets: require( './babel' ).presets
+      extensions: [ '.es' ]
+    )
   ]
-  extensions: [ '.coffee', '.jade', '.js', '.html' ]
+  extensions: [ '.coffee', '.es', '.jade', '.js', '.html' ]
   debug: false
   paths: [ './' ]
   noBundleExternal: true
-  
+
 module.exports = browserifyConfig

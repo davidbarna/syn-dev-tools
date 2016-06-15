@@ -2,6 +2,7 @@ gulp = require( 'gulp' )
 watch = require( './watch' )
 coffeelint = require( './coffeelint' )
 config = require( '../config' ).getInstance()
+utils = require( './utilities' )
 
 ###
  * Compiles coffeescript files to js
@@ -14,7 +15,9 @@ coffee = ( files ) ->
   stream = gulp.src( files )
   stream = coffeelint.lint( stream ) if config.lint()
   stream = coffee.compile( stream )
-  return stream.pipe( gulp.dest( config.dest() ) )
+
+  dest = utils.getDestDir( files )
+  return stream.pipe( gulp.dest( dest ) )
 
 ###
  * @param  {Object} stream Sourcestream
@@ -22,7 +25,9 @@ coffee = ( files ) ->
 ###
 coffee.compile = ( stream ) ->
   gulpCoffee = require( 'gulp-coffee' )
+  uglify = require('gulp-uglify')
   stream = stream.pipe( gulpCoffee( bare: true ) )
+  stream = stream.pipe( uglify() ) if config.minify()
   return stream
 
 module.exports = coffee

@@ -28,6 +28,8 @@ phantomjs:
   'phantomjs.ghostdriver.cli.args': ['--logfile=PATH', '--loglevel=DEBUG']
 ´´´
 ###
+path = require( 'path' )
+rootPath = path.resolve( '.' )
 
 browsers =
   # Chrome
@@ -53,6 +55,7 @@ browsers =
 # There is a [lot of options]
 # (https://github.com/angular/protractor/blob/master/docs/referenceConf.js)
 # but we just use a few for now
+#
 rawConfig =
   test:
     # Boolean. If true, Protractor will connect directly to the browser Drivers
@@ -65,11 +68,11 @@ rawConfig =
 
     # No need of global selenium installation thanks to this.
     # The project can remain "independent"
-    seleniumServerJar: '../../node_modules/protractor/selenium/' +
+    seleniumServerJar: rootPath + '/node_modules/protractor/selenium/' +
       'selenium-server-standalone-2.45.0.jar'
 
     # Place of Chrome Driver
-    chromeDriver: '../../node_modules/protractor/selenium/chromedriver'
+    chromeDriver: rootPath + '/node_modules/protractor/selenium/chromedriver'
 
     # Just chrome for now
     capabilities: browsers.chrome

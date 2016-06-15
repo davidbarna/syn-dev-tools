@@ -1,3 +1,5 @@
+Promise = require( 'bluebird' )
+glob = Promise.promisify( require( 'glob' ) )
 config = require( '../config' ).getInstance()
 logger = require( '../logger' ).getInstance()
 watch = require( './watch' )
@@ -24,7 +26,8 @@ test.e2e = ( files ) ->
   watch( files, test.e2e, 'test.e2e' )
   # Watch generated files and relaunch tests on any change
   watch( config.dest() + '/**/*.*', ( -> test.protractor( files ) ), 'test.e2e.reload' )
-  test.protractor( files )
+  glob( files ).then ( _files ) ->
+    test.protractor( files ) if _files.length > 0
   return coffeelint( files )
 
 ###
