@@ -110,3 +110,6 @@ manager.registerTasks( '*', 'my-prefix-' );
 ```
 $ gulp my-prefix-serve
 ```
+
+## Cordova app compilation
+[Find detailed info here!](docs/build.md)

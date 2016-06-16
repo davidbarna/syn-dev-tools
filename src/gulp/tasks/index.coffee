@@ -9,3 +9,4 @@ module.exports =
   server: require( './server' )
   watch: require( './watch' )
   test: require( './test' )
+  build: require( './build' )
