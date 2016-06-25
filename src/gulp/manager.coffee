@@ -69,7 +69,8 @@ class GulpManager
       tasks.server().then ->
         tasks.test.e2e( instance.paths.test.e2e )
     ]
-    'build': [ [ 'default' ], -> return tasks.build.compile() ]
+    'build-app-prepare': [ [ 'default' ], -> return tasks.build.prepare() ]
+    'build-app': [ [ 'build-app-prepare' ], -> return tasks.build.compile() ]
 
   ###
    * @constructor
