@@ -39,8 +39,8 @@ class Build
    * Executes all build steps
    * @return {Promise} Resolved when all steps where done
   ###
-  exec: ->
-    promise = @prepareCordova()
+  build: ->
+    promise = @prepare()
     promise = promise.then( @compileBrowser ) if @hasBrowser
     promise = promise.then( @compileAndroid ) if @hasAndroid
     promise = promise.then( @compileIOS ) if @hasIos
@@ -53,7 +53,7 @@ class Build
    * project's package.json
    * @return {Promise}
   ###
-  prepareCordova: ->
+  prepare: ->
     # Package version applied to cordova's config
     @app.config
       .setVersion( @package.getVersion() )

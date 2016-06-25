@@ -71,5 +71,14 @@ If you install it, make sure the multiple apk option is disabled in app/config.x
 ## Building cordova app
 As easy as a command.
 ```
-$ gulp build --env development
+$ gulp build-app --env development
 ```
+
+## Preparing platforms for debugging
+If you plan to use cordova "run" commands, you need to prepare the project first:
+
+```
+$ gulp build-app-prepare --env development
+```
+
+This command will bundle the projects and copy it to the /www cordova folder.
