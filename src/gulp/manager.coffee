@@ -1,4 +1,5 @@
 Config = require( './config' )
+paths = require( '../config/paths' )
 config = Config.getInstance()
 gulp = null
 
@@ -29,16 +30,7 @@ class GulpManager
    * Base file paths per type
    * @type {Object}
   ###
-  paths:
-    jade: '/**/*.jade'
-    sass: '/**/*.scss'
-    browserify: [ '/**/*.bundle.+(coffee|js|es)' ]
-    coffee: '/**/!(*.bundle).coffee'
-    babel: '/**/!(*.bundle).es'
-    static: '/**/*.+(html|css|js|jpg|png|svg|ico|mp3|json|yml|ttf|eot|woff|woff2)'
-    test:
-      unit: './test/unit/**/*.spec.coffee'
-      e2e: './test/e2e/**/*.spec.coffee'
+  paths: paths
 
   ###
    * Params needed for tasks registration
