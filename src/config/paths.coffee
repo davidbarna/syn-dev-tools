@@ -8,3 +8,5 @@ module.exports =
   test:
     unit: './test/unit/**/*.spec.+(coffee|js|es)'
     e2e: './test/e2e/**/*.spec.+(coffee|js|es)'
+    eslint: './test/**/*.spec.es'
+    coffeelint: './test/**/*.spec.coffee'
