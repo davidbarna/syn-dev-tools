@@ -3,7 +3,7 @@
   "extends": "standard",
   "globals": {
     "describe": true,
-    "it": false,
+    "it": true,
     "before": true,
     "after": true,
     "afterEach": true,
