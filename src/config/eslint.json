@@ -8,6 +8,8 @@
     "after": true,
     "afterEach": true,
     "beforeEach": true,
+    "afterAll": true,
+    "beforeAll": true,
     "expect": true,
     "sinon": true
   }
