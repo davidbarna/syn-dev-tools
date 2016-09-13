@@ -30,6 +30,7 @@ class CommandExecuter
   ###
   exec: ( command, opts = {} ) ->
     opts.cwd = @_cwd
+    opts.maxBuffer = 1024 * 500
     return new Promise(
       (resolve, reject) ->
         logger.info( 'command: ' + command  )
