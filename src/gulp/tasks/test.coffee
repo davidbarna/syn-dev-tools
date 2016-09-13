@@ -1,11 +1,27 @@
 Promise = require( 'bluebird' )
+gulp = require( 'gulp' )
 glob = Promise.promisify( require( 'glob' ) )
 config = require( '../config' ).getInstance()
 logger = require( '../logger' ).getInstance()
+paths = require( '../../config/paths' )
 watch = require( './watch' )
 coffeelint = require( './coffeelint' )
+babel = require( './babel' )
+mergeStream = require( 'merge-stream' )
 
 test = {}
+
+###
+ * Returns a stream with linters
+ * @return {object} Stream
+###
+test.lint = ->
+  coffeeStream = coffeelint( paths.test.coffeelint )
+  babelStream = gulp.src( paths.test.eslint )
+  babelStream = babel.lint( babelStream )
+  stream = mergeStream(coffeeStream, babelStream)
+  return stream
+
 
 ###
  * Executes all unit tests on given files with karma
@@ -15,7 +31,7 @@ test = {}
 test.unit = ( files ) ->
   files = [ files ] if typeof files is 'string'
   test.karma( files )
-  return coffeelint( files )
+  return test.lint()
 
 ###
  * Executes all e2e tests on given files using protractor

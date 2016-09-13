@@ -42,10 +42,21 @@ $ gulp serve
 Executes all tests located in /test folder
 ```
 $ gulp test
-$ gulp test.unit
-$ gulp test.e2e
 ```
 
+##### Unit tests
+
+```
+$ gulp test.unit
+```
+Unit tests are executed with karma, using the following frameworks:
+* [jasmine](http://jasmine.github.io/)
+* [sinon-chai](https://github.com/domenic/sinon-chai)
+
+##### E2E tests
+```
+$ gulp test.e2e
+```
 > ** IMPORTANT **
 
 > ** If you want to execute end-to-end tests, you must update webdriver to execute tests in chromeDriver.**

@@ -5,6 +5,7 @@ browserifyConfig =
     require( 'stringify' )( appliesTo: includeExtensions: [ '.svg', '.html' ] )
     require( 'babelify' ).configure(
       presets: require( './babel' ).presets
+      plugins: require( './babel' ).plugins
       extensions: [ '.es' ]
     )
   ]

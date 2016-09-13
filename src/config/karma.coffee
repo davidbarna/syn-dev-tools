@@ -4,7 +4,8 @@ module.exports =
     basePath: './',
     frameworks: [ 'browserify', 'sinon-chai', 'jasmine' ]
     files: []
-    preprocessors: './**/*.coffee': [ 'browserify' ]
+    preprocessors:
+      './**/*.+(coffee|js|es)': [ 'browserify' ]
     reporters: [ 'progress' ]
     browsers: [ 'Chrome', 'PhantomJS' ]
     browserify: require( './browserify' )

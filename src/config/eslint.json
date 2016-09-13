@@ -1,4 +1,16 @@
 {
   "parser": "babel-eslint",
-  "extends": "standard"
+  "extends": "standard",
+  "globals": {
+    "describe": true,
+    "it": true,
+    "before": true,
+    "after": true,
+    "afterEach": true,
+    "beforeEach": true,
+    "afterAll": true,
+    "beforeAll": true,
+    "expect": true,
+    "sinon": true
+  }
 }
