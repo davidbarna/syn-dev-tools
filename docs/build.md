@@ -3,7 +3,7 @@
 ## Setting up cordova app
 
 ### Install cordova globally
-All steps described where tests with cordova@6
+All steps described were tested with cordova@6
 ```
 $ npm install -g cordova
 
@@ -48,9 +48,11 @@ For now, dev-tools only works on the following platforms:
 
 
 #### android
-If you install the android platform, you will to do the following:
+If you install the android platform, you will have to do the following:
+
 1. Create /certificates in your cordova app folder
 For android, create /certificates folder
+
 2. Install android sdk. It will be used to compile apk files
 
 
