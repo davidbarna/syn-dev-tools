@@ -1,6 +1,6 @@
 {
   "name": "syn-dev-tools",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "description": "Tools for development: automated tasks, linters, docs and more...",
   "main": "dist/index.js",
   "files": [
