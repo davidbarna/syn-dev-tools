@@ -70,5 +70,10 @@
     "vinyl-source-stream": "1.1.0",
     "watchify": "3.7.0",
     "yargs": "4.1.0"
+  },
+  "devDependencies": {
+    "inquirer": "1.2.2",
+    "jade": "1.11.0",
+    "underscore": "1.8.3"
   }
 }
