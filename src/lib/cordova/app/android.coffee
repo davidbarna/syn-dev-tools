@@ -53,6 +53,13 @@ class CordovaAndroid
 
     return command
 
+  ###
+   * Returns command to zip apk
+   * @return {String}
+  ###
+  getApkZipCommand: ->
+    "`find $ANDROID_HOME -name zipalign` -v 4 #{@getApkPath()} #{@getApkPath()}.zip"
+
 
 
 # Returns all keystores available in certsFolder
