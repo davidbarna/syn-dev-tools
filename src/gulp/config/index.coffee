@@ -7,7 +7,7 @@
 ###
 toBoolean = (value) ->
   return value if typeof value is 'boolean'
-  return (value is 'true') ? true : false
+  return if (value is 'true') then true else false
 
 ###
  * Global config gor gulp tasks
