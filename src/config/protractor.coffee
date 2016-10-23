@@ -30,6 +30,11 @@ phantomjs:
 ###
 path = require( 'path' )
 rootPath = __dirname + '/../../'
+projectPath = path.resolve( '.' )
+
+Config = require( '../lib/config' )
+config = require( '../gulp/config' ).getInstance()
+configEnv = if config.watch() then 'watch' else 'test'
 
 browsers =
   # Chrome
@@ -118,9 +123,12 @@ rawConfig =
     # You can specify a file containing code to run by setting onPrepare to
     # the filename string.
     onPrepare: ->
+      # Babel compilation of specs
       require('babel-register')({
         extensions: ['.es'], presets: [require( 'babel-preset-es2015' )]
       })
+
+      # Reporter for command line
       SpecReporter = require 'jasmine-spec-reporter'
       opts =
         displayStacktrace: true       # display stacktrace for each failed assertion
@@ -139,8 +147,17 @@ rawConfig =
           failure: '✗ '
           pending: '- '
         customProcessors: []
-
       jasmine.getEnv().addReporter new SpecReporter opts
+
+      console.log('-----------watch', config.watch(), typeof config.watch())
+      # Html report
+      if !config.watch()
+        Jasmine2HtmlReporter = require('protractor-jasmine2-html-reporter')
+        jasmine.getEnv().addReporter(
+          new Jasmine2HtmlReporter({
+            savePath: projectPath + '/reports/test.e2e/'
+          })
+        )
 
     # A callback function called once tests are finished.
     onComplete: ->
@@ -162,11 +179,7 @@ rawConfig =
   watch:
     _extends: 'test'
 
-
 # RawConfig is adapted to command options
-Config = require( '../lib/config' )
-config = require( '../gulp/config' ).getInstance()
-configEnv = if config.watch() then 'watch' else 'test'
 protractorConfig = new Config( rawConfig, configEnv )
 
 exports.config = protractorConfig.toObject()

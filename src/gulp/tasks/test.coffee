@@ -85,9 +85,16 @@ test.protractor  = ( files ) ->
   server = browserSync.get( 'dev-tools-static-server' )
   port = server.getOption( 'port' )
   host = server.getOption( 'host' )
+
   protractorConfig =
     configFile: __dirname + '/../../config/protractor'
-    args: ['--baseUrl', 'http://' + host + ':' + port ]
+    args: [
+      '--baseUrl', 'http://' + host + ':' + port,
+      '--watch', config.watch(),
+      '--env', config.env(),
+      '--minify', config.minify(),
+      '--lint', config.lint(),
+    ]
 
   gulp.src( files )
     .pipe protractor( protractorConfig )
