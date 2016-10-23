@@ -29,7 +29,7 @@ phantomjs:
 ´´´
 ###
 path = require( 'path' )
-rootPath = path.resolve( '.' )
+rootPath = __dirname + '/../../'
 
 browsers =
   # Chrome
@@ -67,7 +67,7 @@ rawConfig =
     rootElement: 'body'
 
     # No need of global selenium installation thanks to this.
-    # The project can remain "independent"
+    # The project can remain 'independent'
     seleniumServerJar: rootPath + '/node_modules/protractor/selenium/' +
       'selenium-server-standalone-2.45.0.jar'
 
@@ -107,7 +107,6 @@ rawConfig =
     # the filename string.
     beforeLaunch: ->
 
-
     # At this point, global variable 'protractor' object will NOT be set up,
     # and globals from the test framework will NOT be available. The main
     # purpose of this function should be to bring up test dependencies.
@@ -119,6 +118,9 @@ rawConfig =
     # You can specify a file containing code to run by setting onPrepare to
     # the filename string.
     onPrepare: ->
+      require('babel-register')({
+        extensions: ['.es'], presets: [require( 'babel-preset-es2015' )]
+      })
       SpecReporter = require 'jasmine-spec-reporter'
       opts =
         displayStacktrace: true       # display stacktrace for each failed assertion
