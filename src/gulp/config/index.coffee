@@ -1,5 +1,14 @@
 { defaults } = require( '../../config' )
 
+###*
+ * Converts either string of boolean to boolean equivalent
+ * @param  {String|Boolean} value
+ * @return {Boolean}
+###
+toBoolean = (value) ->
+  return value if typeof value is 'boolean'
+  return if (value is 'true') then true else false
+
 ###
  * Global config gor gulp tasks
 ###
@@ -65,7 +74,7 @@ class GulpConfig
   ###
   debug: ( value ) ->
     return @_debugMode if typeof value is 'undefined'
-    @_debugMode = value
+    @_debugMode = toBoolean(value)
     return this
 
   ###
@@ -75,7 +84,7 @@ class GulpConfig
   ###
   lint: ( value ) ->
     return @_lintMode if typeof value is 'undefined'
-    @_lintMode = value
+    @_lintMode = toBoolean(value)
     return this
 
   ###
@@ -85,7 +94,7 @@ class GulpConfig
   ###
   minify: ( value ) ->
     return @_minifyMode if typeof value is 'undefined'
-    @_minifyMode = value
+    @_minifyMode = toBoolean(value)
     return this
 
   ###
@@ -95,7 +104,7 @@ class GulpConfig
   ###
   watch: ( value ) ->
     return @_watchMode if typeof value is 'undefined'
-    @_watchMode = value
+    @_watchMode = toBoolean(value)
     return this
 
   ###

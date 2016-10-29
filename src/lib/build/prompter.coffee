@@ -15,9 +15,9 @@ class BuildPrompter
         name: 'openxcode'
         type: 'confirm',
         message: 'Do you want to open Xcode to compile *.ipa manually ?',
-      ,
-        ( responses ) -> resolve( responses.openxcode )
       )
+      .then ( responses ) -> resolve responses.openxcode
+      .catch ( error ) -> reject error
 
   notifyMissingKeystore: ->
     return new Promise (resolve, reject) ->
@@ -58,10 +58,9 @@ class BuildPrompter
           type: 'password',
           name: 'password',
           message: 'Please type the keystore password ?',
-        ]
-      ,
-        ( responses ) -> resolve responses
-      )
+      ])
+      .then ( responses ) -> resolve responses
+      .catch ( error ) -> reject error
 
 
 module.exports = BuildPrompter

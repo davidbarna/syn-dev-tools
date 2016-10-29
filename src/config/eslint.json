@@ -11,6 +11,8 @@
     "afterAll": true,
     "beforeAll": true,
     "expect": true,
-    "sinon": true
+    "sinon": true,
+    "browser": true,
+    "by": true
   }
 }

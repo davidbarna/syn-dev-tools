@@ -106,6 +106,7 @@ class Build
       .then => @prompter.askKeystoreInfo( keystores )
       .then ( keystoreInfo ) => @app.android.getApkSignatureCommand( keystoreInfo )
       .then ( signatureCommand ) => @app.command.exec( signatureCommand )
+      .then => @app.command.exec( @app.android.getApkZipCommand() )
 
   ###
    * Compiles Xcode project for manual ipa compilation

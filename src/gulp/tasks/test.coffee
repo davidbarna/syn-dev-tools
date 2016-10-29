@@ -44,7 +44,7 @@ test.e2e = ( files ) ->
   watch( config.dest() + '/**/*.*', ( -> test.protractor( files ) ), 'test.e2e.reload' )
   glob( files ).then ( _files ) ->
     test.protractor( files ) if _files.length > 0
-  return coffeelint( files )
+  return test.lint( files )
 
 ###
  * Executes karma tests runner
@@ -85,9 +85,16 @@ test.protractor  = ( files ) ->
   server = browserSync.get( 'dev-tools-static-server' )
   port = server.getOption( 'port' )
   host = server.getOption( 'host' )
+
   protractorConfig =
     configFile: __dirname + '/../../config/protractor'
-    args: ['--baseUrl', 'http://' + host + ':' + port ]
+    args: [
+      '--baseUrl', 'http://' + host + ':' + port,
+      '--watch', config.watch(),
+      '--env', config.env(),
+      '--minify', config.minify(),
+      '--lint', config.lint(),
+    ]
 
   gulp.src( files )
     .pipe protractor( protractorConfig )
