@@ -73,11 +73,12 @@ rawConfig =
 
     # No need of global selenium installation thanks to this.
     # The project can remain 'independent'
-    seleniumServerJar: rootPath + '/node_modules/protractor/selenium/' +
-      'selenium-server-standalone-2.45.0.jar'
+    seleniumServerJar: rootPath + '/node_modules/webdriver-manager/selenium/' +
+      'selenium-server-standalone2.53.1.jar'
 
     # Place of Chrome Driver
-    chromeDriver: rootPath + '/node_modules/protractor/selenium/chromedriver'
+    chromeDriver: rootPath + '/node_modules/webdriver-manager/selenium/chromedriver_2.25'
+
 
     # Just chrome for now
     capabilities: browsers.chrome
@@ -149,7 +150,6 @@ rawConfig =
         customProcessors: []
       jasmine.getEnv().addReporter new SpecReporter opts
 
-      console.log('-----------watch', config.watch(), typeof config.watch())
       # Html report
       if !config.watch()
         Jasmine2HtmlReporter = require('protractor-jasmine2-html-reporter')
