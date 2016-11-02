@@ -43,6 +43,7 @@ sass.lint = ( stream ) ->
   scsslintOptions =
     config: path.resolve( __dirname + '/../../config/scss-lint.yml')
     customReport: customReport
+    maxBuffer: 30720000
   stream = stream.pipe( scsslint( scsslintOptions ) )
   stream = stream.on( 'error', ( err ) -> log.error( "#{err.plugin}: #{err.message}" ) )
 
